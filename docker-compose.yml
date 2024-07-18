@@ -1,0 +1,58 @@
+version: '3.6'
+services:
+  frontend:
+    image: frontend
+    container_name: frontend
+    hostname: frontend
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app          # Mounts local frontend directory into container
+      # - frontend_node_modules:/app/node_modules  # Named volume for Node.js modules
+    networks:
+      - mymernapp               # Connects frontend to custom network
+
+  backend:
+    image: backend
+    container_name: backend
+    hostname: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/usr/src/app   # Mounts local backend directory into container
+      # - backend_node_modules:/usr/src/app/node_modules  # Named volume for Node.js modules
+    restart: always
+    networks:
+      - mymernapp               # Connects backend to custom network
+    env_file:
+      - ./backend/.env          # Loads environment variables from backend/.env file
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    hostname: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mymernappdb:/data/db    # Named volume for MongoDB data
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - mymernapp               # Connects MongoDB to custom network
+
+volumes:
+  mymernappdb:                   # Defines named volume for MongoDB data storage
+  # frontend_node_modules:         # Defines named volume for frontend Node.js modules
+  # backend_node_modules:          # Defines named volume for backend Node.js modules
+
+networks:
+  mymernapp:
+    driver: bridge              # Sets up custom bridge network for communication between services

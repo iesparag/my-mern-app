@@ -1,0 +1,20 @@
+# Use an official Node runtime as the base image
+FROM node:20
+
+# Set the working directory in the container
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install any needed packages
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# Expose the listening port
+EXPOSE 8080
+
+# Define the command to run the app
+CMD ["npm", "run", "dev"]

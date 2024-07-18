@@ -1,0 +1,84 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+    width: 30vw;
+    max-width: 100%;
+  }
+  
+  label {
+    display: block;
+    // margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+  }
+
+  input[type="text"],input[type="email"],
+  input[type="password"]{
+    min-height: 50px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    width: auto; /* Ensure checkbox takes minimal width */
+  }
+  
+  .checkbox-group label {
+    width: auto; /* Ensure label takes only the necessary width */
+    font-weight: normal;
+  }
+  
+  .radio-group {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .radio-group label {
+    margin-right: 1rem;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: -0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+  }
+  
