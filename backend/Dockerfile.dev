@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8080
 
 # Define the command to run the app
-CMD ["nodemon", "src/index.js"]
+CMD ["npm", "run", "dev"]
