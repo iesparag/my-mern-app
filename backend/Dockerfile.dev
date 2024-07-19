@@ -2,7 +2,7 @@
 FROM node:20
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
@@ -13,7 +13,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Expose the listening port
+# Expose the port the app runs on
 EXPOSE 8080
 
 # Define the command to run the app
