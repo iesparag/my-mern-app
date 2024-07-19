@@ -28,19 +28,19 @@ jobs:
     - name: Build and test frontend
       run: |
         docker-compose -f docker-compose.dev.yml up --build --abort-on-container-exit --exit-code-from frontend
-      working-directory: ./frontend
+      working-directory: .
 
     - name: Build and test backend
       run: |
         docker-compose -f docker-compose.dev.yml up --build --abort-on-container-exit --exit-code-from backend
-      working-directory: ./backend
+      working-directory: .
 
     - name: Cleanup frontend
       if: ${{ success() }}
       run: docker-compose -f docker-compose.dev.yml down
-      working-directory: ./frontend
+      working-directory: .
 
     - name: Cleanup backend
       if: ${{ success() }}
       run: docker-compose -f docker-compose.dev.yml down
-      working-directory: ./backend
+      working-directory: .
