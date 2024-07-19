@@ -2,19 +2,19 @@
 FROM node:20
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install any needed packages
-RUN npm install
+# Install only production dependencies
+RUN npm install --production
 
 # Bundle app source
 COPY . .
 
-# Expose the listening port
+# Expose the port the app runs on
 EXPOSE 8080
 
 # Define the command to run the app
-CMD ["npm", "run", "dev"]
+CMD ["node", "src/index.js"]

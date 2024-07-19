@@ -13,11 +13,8 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Build the app
-# RUN npm run build
+# Expose the port the app runs on
+EXPOSE 8080
 
-# Serve the static files on port 3000
-EXPOSE 3000
-
-# Define the command to serve the app
-CMD ["npm", "start"]
+# Define the command to run the app
+CMD ["nodemon", "src/index.js"]

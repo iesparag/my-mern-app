@@ -331,7 +331,7 @@ const NAV_ITEMS = [
     href: "#",
   },
   {
-    label: " jn",
+    label: " j",
     href: "#",
   },
 ];
