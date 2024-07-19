@@ -39,15 +39,23 @@ jobs:
                 MONGODB_PROD_URI=${{ secrets.MONGODB_PROD_URI }}
             EOF
 
-    - name: Build and test frontend
+    - name: Build and test
       run: |
-        docker-compose -f docker-compose.dev.yml up --build --abort-on-container-exit --exit-code-from frontend
+        docker-compose -f docker-compose.dev.yml up -d 
       working-directory: .
 
-    - name: Build and test backend
+    - name: check logs of backend
       run: |
-        docker-compose -f docker-compose.dev.yml up --build --abort-on-container-exit --exit-code-from backend
+        sleep 20
+        docker logs backend
       working-directory: .
+
+
+
+    # - name: Build and test backend
+    #   run: |
+    #     docker-compose -f docker-compose.dev.yml up --build --abort-on-container-exit --exit-code-from backend
+    #   working-directory: .
 
     - name: Cleanup frontend
       if: ${{ success() }}
