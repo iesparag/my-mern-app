@@ -34,6 +34,7 @@ jobs:
     - name: Create BE ENV file
       run: |
             cat <<EOF >backend/.env
+                PORT=${{ secrets.PORT }}
                 MONGODB_URI=${{ secrets.MONGODB_URI }}
                 MONGODB_DEV_URI=${{ secrets.MONGODB_DEV_URI }}
                 MONGODB_PROD_URI=${{ secrets.MONGODB_PROD_URI }}
